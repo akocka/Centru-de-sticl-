@@ -8,14 +8,14 @@
 <meta name="theme-color" content="#E9EFF1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400;62..125,500;62..125,600;62..125,800&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400;62..125,500;62..125,600;62..125,800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400;62..125,500;62..125,600;62..125,800&display=swap"></noscript>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="intro" id="intro" aria-hidden="true">
-  <div class="lamp"></div><div class="floor"></div>
-  <div class="hud"><span>Secția de termopane · <b>Livezeni</b></span><span>Termopan nr. <b id="unitNo">0001</b></span></div>
-  <div class="stage">
+<div class="intro" id="intro">
+  <div class="lamp" aria-hidden="true"></div><div class="floor" aria-hidden="true"></div>
+  <div class="hud" aria-hidden="true"><span>Secția de termopane · <b>Livezeni</b></span><span>Termopan nr. <b id="unitNo">0001</b></span></div>
+  <div class="stage" aria-hidden="true">
     <div class="unit">
       <div class="pane p1"></div><div class="argon"></div><div class="spacer"></div><div class="pane p2"></div><div class="seal"></div>
       <div class="cut"></div>
@@ -24,7 +24,7 @@
     <div class="belt"></div><div class="rollers"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="brand"><b>Centru de Sticlă</b><span>Producem și montăm sticlă în Târgu Mureș, din 1996.</span></div>
-  <div class="steps" id="isteps"><span>01 Tăiere</span><span>02 Distanțier</span><span>03 Asamblare</span><span>04 Argon</span><span>05 Etanșare</span><span>06 Etichetare</span></div>
+  <div class="steps" id="isteps" aria-hidden="true"><span>01 Tăiere</span><span>02 Distanțier</span><span>03 Asamblare</span><span>04 Argon</span><span>05 Etanșare</span><span>06 Etichetare</span></div>
   <button class="skip" id="skip" type="button">Sari peste</button>
 </div>
 
@@ -80,10 +80,10 @@
         <p class="st-count">Treapta <b id="stN">01</b> din 18</p>
         <div class="st-dots" id="stDots" role="group" aria-label="Pașii"><button type="button" aria-label="Pasul 1"></button><button type="button" aria-label="Pasul 2"></button><button type="button" aria-label="Pasul 3"></button><button type="button" aria-label="Pasul 4"></button></div>
         <div class="slides">
-          <div class="slide on" data-s="0"><h3>Totul începe cu o discuție.</h3><p>Ne spui ce ți-ai imaginat: o scară, un perete, o ușă sau o cabină de duș. Te consiliem gratuit și venim să măsurăm.</p></div>
-          <div class="slide" data-s="1"><h3>Calculat la milimetru.</h3><p>Alegem împreună tipul de sticlă, grosimea și feroneria potrivite, ca totul să fie sigur și să arate exact cum ți-ai dorit.</p></div>
-          <div class="slide" data-s="2"><h3>Produs în secțiile noastre.</h3><p>Securizăm, laminăm și prelucrăm sticla în Livezeni. Fiecare termopan pleacă cu etichetă de identificare, ca să știi exact ce primești.</p></div>
-          <div class="slide" data-s="3"><h3>Montat de echipa noastră.</h3><p>Aducem sticla și o montăm noi. Macaraua noastră ridică geamurile mari până la 7 metri, rapid și în siguranță.</p></div>
+          <div class="slide on" data-s="0"><h2>Totul începe cu o discuție.</h2><p>Ne spui ce ți-ai imaginat: o scară, un perete, o ușă sau o cabină de duș. Te consiliem gratuit și venim să măsurăm.</p></div>
+          <div class="slide" data-s="1"><h2>Calculat la milimetru.</h2><p>Alegem împreună tipul de sticlă, grosimea și feroneria potrivite, ca totul să fie sigur și să arate exact cum ți-ai dorit.</p></div>
+          <div class="slide" data-s="2"><h2>Produs în secțiile noastre.</h2><p>Securizăm, laminăm și prelucrăm sticla în Livezeni. Fiecare termopan pleacă cu etichetă de identificare, ca să știi exact ce primești.</p></div>
+          <div class="slide" data-s="3"><h2>Montat de echipa noastră.</h2><p>Aducem sticla și o montăm noi. Macaraua noastră ridică geamurile mari până la 7 metri, rapid și în siguranță.</p></div>
         </div>
         <div class="st-cta" id="stCta"><a class="btn btn-main" href="#oferta">Începe cu o consultanță gratuită</a></div>
       </div>
