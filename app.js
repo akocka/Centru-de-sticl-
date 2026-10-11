@@ -94,8 +94,13 @@ const q = new URLSearchParams(location.search);
   const n = +box.dataset.n || 3;
   const strip = h => { const d = document.createElement("div"); d.innerHTML = h || ""; return (d.textContent || "").trim(); };
   box.innerHTML = POSTS.slice(0, n).map(([t, u]) => `<a class="post" href="${SITE}${esc(u)}" target="_blank" rel="noopener"><b>${esc(t)}</b><span>Citește articolul</span></a>`).join("");
-  fetch(`${CONFIG.wpBase}/wp-json/wp/v2/posts?per_page=${n}&_fields=id,title,date,excerpt`).then(r => r.ok ? r.json() : Promise.reject()).then(list => {
-    if (!Array.isArray(list) || !list.length) return;
+  // The WordPress site is in 3 languages, so the API returns each article 3 times (RO, HU, EN).
+  // Ask for Romanian only (lang=ro works with Polylang/WPML) and also drop links that point to /hu/ or /en/.
+  const other = /\/(hu|en)(\/|$)|[?&]lang=(hu|en)\b/i;
+  fetch(`${CONFIG.wpBase}/wp-json/wp/v2/posts?lang=ro&per_page=${Math.min(n * 3, 100)}&_fields=id,title,date,excerpt,link`).then(r => r.ok ? r.json() : Promise.reject()).then(all => {
+    if (!Array.isArray(all) || !all.length) return;
+    const ro = all.filter(p => !other.test(p.link || ""));
+    const list = (ro.length ? ro : all).slice(0, n);
     box.innerHTML = list.map(p => { const ex = strip(p.excerpt && p.excerpt.rendered).slice(0, 140);
       return `<a class="post" href="articol.html?id=${p.id}"><time datetime="${esc(p.date)}">${new Date(p.date).toLocaleDateString("ro-RO", { day:"numeric", month:"long", year:"numeric" })}</time><b>${esc(strip(p.title && p.title.rendered))}</b><span>${esc(ex)}${ex.length >= 140 ? "…" : ""}</span></a>`; }).join("");
   }).catch(() => {});
